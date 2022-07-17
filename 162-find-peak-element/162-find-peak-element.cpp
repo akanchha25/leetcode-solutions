@@ -7,12 +7,7 @@ public:
         {
             return 0;
         }
-          if(nums.size()==2)
-        {
-              if(nums[0]>nums[1])
-              { return 0;}
-              else return 1;
-        }
+          
         int mid;
         int l=0,h=nums.size()-1;
         
