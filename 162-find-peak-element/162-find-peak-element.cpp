@@ -3,10 +3,7 @@ public:
     int findPeakElement(vector<int>& nums) {
         
         
-        if(nums.size()==1)
-        {
-            return 0;
-        }
+       
           
         int mid;
         int l=0,h=nums.size()-1;
