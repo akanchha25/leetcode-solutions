@@ -23,9 +23,7 @@ public:
     
     int shipWithinDays(vector<int>& weights, int days) {
         int res=INT_MIN;
-        if(days>weights.size())
-            return -1;
-        
+      
         int l=*max_element(weights.begin(), weights.end());   
         int h=accumulate(weights.begin(), weights.end(), 0);
         
