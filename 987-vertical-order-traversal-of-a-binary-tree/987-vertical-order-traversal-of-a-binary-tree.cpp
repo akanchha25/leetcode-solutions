@@ -11,34 +11,34 @@
  */
 class Solution {
 public:
-        map<int,vector<pair<int,int>>> m;
-    map<int,priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>>> m2;
-    void traver(int position,TreeNode* root,int height) {
-        if(root==NULL) {
-            return;
-        }
-        m[root->val].push_back({position,height});
-        traver(position-1,root->left,height+1);
-        traver(position+1,root->right,height+1);
-        return;
+       map<int,vector<pair<int,int>>> mp;
+    
+    void dfs(TreeNode* root, int r, int c)
+    {
+        if(!root)   return;
+        
+        mp[c].push_back({r, root->val});
+        dfs(root->left, r + 1, c - 1);
+        dfs(root->right, r + 1, c + 1);
     }
+public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        traver(0,root,0);
-        for(auto i : m) {
-            for(int j = 0;j<i.second.size();j++) {
-                m2[i.second[j].first].push({i.second[j].second,i.first});    
+        dfs(root, 0, 0);
+        
+        vector<vector<int>> ans;
+        int n;
+        for(auto& m : mp)
+        {
+            sort(m.second.begin(), m.second.end());
+            
+            vector<int> vec;
+            for(auto& p : m.second)
+            {
+                vec.push_back(p.second);
             }
+            ans.push_back(vec);
+            
         }
-        vector<vector<int>> v;
-        vector<int> v2;
-        for(auto i : m2) {
-            while(!i.second.empty()) {
-                v2.push_back(i.second.top().second);
-                i.second.pop();
-            }
-            v.push_back(v2);
-            v2.clear();
-        }
-        return v;
+        return ans;
     }
 };
