@@ -6,7 +6,33 @@ public:
     }
     
     bool isValid(string str) {
-   /*     stack<char> v;
+   
+        
+        stack<char> st;
+        
+        
+        for(int i=0;i<str.length();i++){
+            
+            if(str[i]=='(' || str[i]=='{' || str[i]=='['){
+                
+                st.push(str[i]);
+            }
+            else{
+                if(st.empty()){
+                    return false;
+                }
+                else if(check(st.top(),str[i])){
+                    st.pop();
+                }
+                else return false;
+            }
+        }
+        return st.empty()?true:false;
+       
+    }
+};
+
+/*     stack<char> v;
         
         map<char,char> mapping;
         mapping['}']='{';
@@ -43,26 +69,3 @@ public:
         
        return v.empty() ? true : false; */
         
-        stack<char> st;
-        
-        
-        for(int i=0;i<str.length();i++){
-            
-            if(str[i]=='(' || str[i]=='{' || str[i]=='['){
-                
-                st.push(str[i]);
-            }
-            else{
-                if(st.empty()){
-                    return false;
-                }
-                else if(check(st.top(),str[i])){
-                    st.pop();
-                }
-                else return false;
-            }
-        }
-        return st.empty()?true:false;
-       
-    }
-};
