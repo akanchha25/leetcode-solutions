@@ -27,9 +27,5 @@ private:
         findPaths(node -> right, sum - node -> val, path, paths);
         path.pop_back();
     }
-}
-
-
-
-;
+};
 
